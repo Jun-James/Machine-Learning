@@ -1,0 +1,51 @@
+## 分类指标
+
+### 评估指标
+
+
+
+|      |      | 预测               | 预测              |
+| ---- | ---- | ------------------ | ----------------- |
+|      |      | 1                  | 0                 |
+| 标签 | 1    | **True  Positive** | False Negative    |
+| 标签 | 0    | False Positive     | **True Negative** |
+
+**精度**（Accuracy）:分类正确的样本数占样本总数的比例
+$$
+\mathrm{Acc}=\frac{\mathrm{TP}+\mathrm{TN}}{\mathrm{TP}+\mathrm{TN}+\mathrm{FP}+\mathrm{FN}}
+$$
+**准确率**（Precision）:**预测**为1的样本中**标签**为1的比例
+$$
+\text { Prec }=\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FP}}
+$$
+**召回率**（Recall）:**标签**为1的样本中**预测**为1的比例
+$$
+\operatorname{Rec}=\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FN}}
+$$
+**问题：准确率和召回率之间如何权衡**？
+
+可以用以下公式来表示二者之间的关系：
+$$
+\hat{y}=\left\{\begin{array}{ll}
+1, & \quad \quad p_{\theta}(y=1 | x)>h \\
+0, & \text { otherwise }
+\end{array}\right.
+$$
+$p_{\theta}(y=1 | x)$ 表示在参数为 $\theta$ 的模型参数下，预测为1的样本中，标签为1的概率。
+
+**阈值**[0,1]，越高，代表准确度越高，召回率越低，阈值极端值为0.99
+
+阈值越低，准确度越低，召回率越高，极端情况下，阈值=0
+
+**F1 度量** ：值越大，代表模型表现越佳。
+$$
+\mathrm{F} 1=\frac{2 \times \text { Precision } \times \mathrm{Recall}}{\text { Precision }+\mathrm{Recall}}
+$$
+**AUC评价法（ROC（Receiver operating characteristic）曲线下面积）** 
+
+基于排序的度量方法。
+
+可以理解为用描点法，瞄出概率从高到低排列中，每个预测概率下，真正率和假正率组成的的坐标，进而得到ROC曲线，计算其包含的面积后，即可得到AUC值。
+
+![image-20200310162707194](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20200310162707194.png)
+
